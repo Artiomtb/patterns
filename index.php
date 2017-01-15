@@ -1,11 +1,14 @@
 <?php
 
-require_once("ConfigSingleton.php");
+require_once "ConfigSingleton.php";
 require_once "DatabaseAdapterFactory.php";
 require_once "DatabaseAdapters/DatabaseAdapters.php";
-require_once "Exceptions/IncorrectAdapterNameException.php";
 
-$config = ConfigSingleton::getInstance();
+try {
+    $config = ConfigSingleton::getInstance();
+} catch (ParametersParseException $e) {
+    echo $e->getMessage();
+}
 
 try {
     $database_factory = new DatabaseAdapterFactory();

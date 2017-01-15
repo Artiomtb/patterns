@@ -1,7 +1,5 @@
 <?php
 
-require_once "DatabaseAdapterI.php";
-
 /**
  * IMplementation of DatabaseAdapterI for Oracle database
  *
@@ -31,6 +29,6 @@ class OracleSQLAdapter implements DatabaseAdapterI
      */
     function select($params)
     {
-        // TODO: Implement select() method.
+        echo "Send query to OracleDB: ".$params."<br>";
     }
 }
