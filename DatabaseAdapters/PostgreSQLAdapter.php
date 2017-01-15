@@ -29,6 +29,6 @@ class PostgreSQLAdapter implements DatabaseAdapterI
      */
     function select($params)
     {
-        // TODO: Implement select() method.
+        echo "Send query to PostgresDB: ".$params."<br>";
     }
 }

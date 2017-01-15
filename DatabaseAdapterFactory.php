@@ -1,6 +1,5 @@
 <?php
 
-
 require_once "DatabaseAdapters/DatabaseAdapterI.php";
 require_once "Exceptions/IncorrectAdapterNameException.php";
 
@@ -25,10 +24,18 @@ class DatabaseAdapterFactory
             case DatabaseAdapters::POSTRESQL_ADAPTER:
                 require_once "DatabaseAdapters/PostgreSQLAdapter.php";
                 $result = new PostgreSQLAdapter();
+                $result->connect();
+                $result->select('SELECT ...');
+                $result->disconnect();
+
                 break;
             case DatabaseAdapters::ORACLE_ADAPTER:
                 require_once "DatabaseAdapters/OracleSQLAdapter.php";
                 $result = new OracleSQLAdapter();
+                $result->connect();
+                $result->select('SELECT ...');
+                $result->disconnect();
+
                 break;
             default:
                 throw new IncorrectAdapterNameException("Name " . $name . " is incorrect!");
