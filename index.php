@@ -6,18 +6,12 @@ require_once "DatabaseAdapters/DatabaseAdapters.php";
 
 try {
     $config = ConfigSingleton::getInstance();
-} catch (ParametersParseException $e) {
-    echo $e->getMessage();
-}
-
-try {
     $database_factory = new DatabaseAdapterFactory();
     $adapter = $database_factory->getAdapter($config->get("database")["adapter"]);
     debug($adapter);
-} catch (IncorrectAdapterNameException $e) {
+} catch (Exception $e) {
     echo $e->getMessage();
 }
-
 
 function debug($value)
 {
