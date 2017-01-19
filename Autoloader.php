@@ -53,7 +53,7 @@ class Autoloader
                 }
             }
         }
-
+        self::addNamspacePath($classname, $class_path);
         return realpath(str_replace('\\', DIRECTORY_SEPARATOR, $class_path));
     }
 }
